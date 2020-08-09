@@ -1,0 +1,22 @@
+{
+	"name": "vast",
+	"version": "1.0.0",
+	"description": "Vast Responsive Framework for Immense Displays",
+	"dependencies": {
+		"aws-amplify": "latest",
+		"style-loader": "^1.2.1"
+	},
+	"devDependencies": {
+		"copy-webpack-plugin": "^4.5.2",
+		"css-loader": "^4.2.1",
+		"sass": "^1.26.10",
+		"sass-loader": "^9.0.3",
+		"webpack": "^4.44.1",
+		"webpack-cli": "^3.1.0",
+		"webpack-dev-server": "^3.1.5"
+	},
+	"scripts": {
+		"start": "webpack && webpack-dev-server --mode development",
+		"build": "webpack"
+	}
+}
