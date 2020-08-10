@@ -3,10 +3,6 @@
 // Foundation's settings file, for reference:
 // https://github.com/foundation/foundation-sites/blob/develop/scss/settings/_settings.scss
 
-@import 'adjust-for-distance';
-
-$distance: 'very-far';
-
 $breakpoints: (
 	small: 0,
 	medium: 640px,
@@ -18,65 +14,4 @@ $breakpoints: (
 
 $breakpoint-classes: (small medium large xlarge xxlarge vast);
 
-$header-styles: (
-	small: (
-		'h1': (
-			'font-size': 24,
-		),
-		'h2': (
-			'font-size': 20,
-		),
-		'h3': (
-			'font-size': 19,
-		),
-		'h4': (
-			'font-size': 18,
-		),
-		'h5': (
-			'font-size': 17,
-		),
-		'h6': (
-			'font-size': 16,
-		),
-	),
-	medium: (
-		'h1': (
-			'font-size': 48,
-		),
-		'h2': (
-			'font-size': 40,
-		),
-		'h3': (
-			'font-size': 31,
-		),
-		'h4': (
-			'font-size': 25,
-		),
-		'h5': (
-			'font-size': 20,
-		),
-		'h6': (
-			'font-size': 16,
-		),
-	),
-	vast: (
-		'h1': (
-			'font-size': adjust-for-distance(48, $distance),
-		),
-		'h2': (
-			'font-size': adjust-for-distance(40, $distance),
-		),
-		'h3': (
-			'font-size': adjust-for-distance(31, $distance),
-		),
-		'h4': (
-			'font-size': adjust-for-distance(25, $distance),
-		),
-		'h5': (
-			'font-size': adjust-for-distance(20, $distance),
-		),
-		'h6': (
-			'font-size': adjust-for-distance(16, $distance),
-		),
-	),
-);
+// $global-font-size: 16;

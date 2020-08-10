@@ -4,11 +4,7 @@
 // All of foundation
 @include foundation-everything;
 
-.presentation {
-	@include breakpoint(vast) {
-		background: red;
-	}
-}
+@import 'adjust-for-distance';
 
 /*
 // Global styles
