@@ -2,6 +2,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 
+const marked = require('marked');
+const renderer = new marked.Renderer();
+
 module.exports = {
 	mode: 'development',
 	entry: './src/app.js',
@@ -24,6 +27,21 @@ module.exports = {
 					'css-loader',
 					// Compiles Sass to CSS
 					'sass-loader',
+				],
+			},
+			{
+				test: /\.md$/,
+				use: [
+					{
+						loader: 'html-loader',
+					},
+					{
+						loader: 'markdown-loader',
+						options: {
+							pedantic: true,
+							renderer,
+						},
+					},
 				],
 			},
 		],
