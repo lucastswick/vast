@@ -29,13 +29,12 @@ $distance-to-size-ratio: (
 	// $adjusted-size: $size * map.get($distance-to-size-ratio, $distance);
 	$multiplier: map.get($distance-to-size-ratio, $distance);
 	$adjusted-size: $base / $multiplier * 16 * 1rem;
-	@debug $adjusted-size;
+	// @debug $adjusted-size;
 	@return $adjusted-size;
 }
 
-// @debug 'ADJUSTING FOR DISTANCE';
-// @debug adjust-for-distance(10px, 'medium');
-
+// generates classes, named .distance-close, .distance-medium, etc
+// that adjust font sizes
 @each $name, $multiplier in $distance-to-size-ratio {
 	@include breakpoint(vast) {
 		.distance-#{$name} {

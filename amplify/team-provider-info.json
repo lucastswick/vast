@@ -10,6 +10,14 @@
             "StackName": "amplify-vast-dev-122914",
             "StackId": "arn:aws:cloudformation:us-east-1:845561353442:stack/amplify-vast-dev-122914/9df38600-da76-11ea-90c6-0eb21ddd4aff",
             "AmplifyAppId": "d3iyak2w280zm"
+        },
+        "categories": {
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d3iyak2w280zm",
+                    "type": "manual"
+                }
+            }
         }
     }
 }

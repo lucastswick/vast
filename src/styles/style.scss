@@ -1,10 +1,25 @@
 @import 'settings';
+// @import 'dark-theme';
 @import 'foundation-sites/scss/foundation';
 
 // All of foundation
 @include foundation-everything;
 
 @import 'adjust-for-distance';
+
+.presentation {
+	[data-background] {
+		position: absolute;
+		z-index: -1;
+		width: 100vw;
+		height: 100vh;
+		left: 0;
+		top: 0;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+	}
+}
 
 /*
 // Global styles
