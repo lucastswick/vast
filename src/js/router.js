@@ -59,11 +59,19 @@ class Router {
 
 		contents.innerHTML = html;
 
-		var list = document.querySelectorAll('div[data-background]');
+		// set background images
+		const backgroundList = document.querySelectorAll('div[data-background]');
 
-		for (var i = 0; i < list.length; i++) {
-			var url = list[i].getAttribute('data-background');
-			list[i].style.backgroundImage = "url('" + url + "')";
+		for (let i = 0; i < backgroundList.length; i++) {
+			const url = backgroundList[i].getAttribute('data-background');
+			backgroundList[i].style.backgroundImage = "url('" + url + "')";
+		}
+
+		var alignmentList = document.querySelectorAll('div[data-align]');
+
+		for (let i = 0; i < alignmentList.length; i++) {
+			const alignment = alignmentList[i].getAttribute('data-align');
+			alignmentList[i].parentNode.style.textAlign = alignment;
 		}
 	}
 

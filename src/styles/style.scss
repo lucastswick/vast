@@ -24,6 +24,16 @@
 	}
 }
 
+@include breakpoint(vast) {
+	.grid-container {
+		max-width: 90%;
+	}
+}
+
+[data-align='left'] {
+	text-align: left;
+}
+
 /*
 // Global styles
 @include foundation-global-styles;
