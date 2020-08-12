@@ -3,24 +3,31 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Amplify Framework</title>
+  <title>Vast Framework</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 
 
 <body>
   <div class="grid-y grid-frame grid-padding-x presentation align-middle">
-    <div class="cell shrink header medium-cell-block-container align-center">
-      <h1>Ted's Presentation</h1>
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="dropdown menu">
+          <li class="menu-text">Ted's Presentation</li>
+        </ul>
+      </div>
+      <div class="top-bar-right">
+        <ul class="menu">
+          <li><button type="button" class="button">Prev</button></li>
+          <li><button type="button" class="button">Next</button></li>
+        </ul>
+      </div>
     </div>
     <div class="cell medium-auto medium-cell-block-container align-center-middle">
       <div id="contents" class="distance-medium"></div>
     </div>
-    <div class="cell shrink footer">
-      <h3>Ted's Footer</h3>
-    </div>
   </div>
-  <script src="main.bundle.js"></script>
+  <script src="/main.bundle.js"></script>
 </body>
 
 </html>

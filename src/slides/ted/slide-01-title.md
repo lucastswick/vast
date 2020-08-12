@@ -2,4 +2,4 @@
 
 # Title Slide
 
-##### By Ted
+By Ted

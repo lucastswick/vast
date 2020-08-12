@@ -1,5 +1,5 @@
 @import 'settings';
-// @import 'dark-theme';
+@import 'dark-theme';
 @import 'foundation-sites/scss/foundation';
 
 // All of foundation
@@ -8,6 +8,9 @@
 @import 'adjust-for-distance';
 
 .presentation {
+	#contents {
+		text-align: center;
+	}
 	[data-background] {
 		position: absolute;
 		z-index: -1;

@@ -1,13 +1,7 @@
 import 'STYLES/style.scss';
 
-const html = require('./ted/slide-01-title.md');
-const contents = document.getElementById('contents');
+import Router from 'JS/router.js';
+import Navigation from 'JS/navigation.js';
 
-contents.innerHTML = html;
-
-var list = document.querySelectorAll('div[data-background]');
-
-for (var i = 0; i < list.length; i++) {
-	var url = list[i].getAttribute('data-background');
-	list[i].style.backgroundImage = "url('" + url + "')";
-}
+const router = new Router('/json/ted.json');
+const nav = new Navigation({ router });

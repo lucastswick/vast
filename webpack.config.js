@@ -50,6 +50,8 @@ module.exports = {
 		contentBase: './dist',
 		overlay: true,
 		hot: true,
+		historyApiFallback: true,
+		contentBase: path.join(__dirname, 'assets'),
 	},
 	plugins: [
 		new CopyWebpackPlugin(['index.html']),
@@ -58,6 +60,7 @@ module.exports = {
 	resolve: {
 		alias: {
 			STYLES: path.resolve(__dirname, 'src/styles/'),
+			JS: path.resolve(__dirname, 'src/js/'),
 		},
 	},
 };

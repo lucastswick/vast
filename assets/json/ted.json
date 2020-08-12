@@ -1,0 +1,11 @@
+{
+	"title": "Ted's Presentation",
+	"slides": [
+		{
+			"loc": "ted/slide-01-title.md"
+		},
+		{
+			"loc": "ted/slide-02-image.md"
+		}
+	]
+}

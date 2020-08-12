@@ -11,7 +11,7 @@
 // medium: 10-25 ft
 // far: 25-50 ft
 // very-far: 50+ ft
-@use "sass:list";
+
 @use "sass:map";
 
 $distance-to-size-ratio: (
