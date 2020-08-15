@@ -10,21 +10,9 @@
 
 <body>
   <div class="grid-y grid-frame grid-padding-x presentation align-middle">
-    <div class="top-bar">
-      <div class="top-bar-left">
-        <ul class="dropdown menu">
-          <li class="menu-text">Ted's Presentation</li>
-        </ul>
-      </div>
-      <div class="top-bar-right">
-        <ul class="menu">
-          <li><button type="button" class="button">Prev</button></li>
-          <li><button type="button" class="button">Next</button></li>
-        </ul>
-      </div>
-    </div>
+    <div id="controls" class="top-bar bottom"></div>
     <div class="cell medium-auto medium-cell-block-container align-center-middle">
-      <div id="contents" class="grid-container distance-medium"></div>
+      <div id="contents" class="grid-container distance-medium cell-block-y"></div>
     </div>
   </div>
   <script src="/main.bundle.js"></script>

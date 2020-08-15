@@ -44,6 +44,17 @@ module.exports = {
 					},
 				],
 			},
+			{
+				test: /\.m?js$/,
+				exclude: /(node_modules|bower_components)/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: ['@babel/preset-env'],
+						plugins: ['@babel/plugin-proposal-object-rest-spread'],
+					},
+				},
+			},
 		],
 	},
 	devServer: {
@@ -51,7 +62,6 @@ module.exports = {
 		overlay: true,
 		hot: true,
 		historyApiFallback: true,
-		contentBase: path.join(__dirname, 'assets'),
 	},
 	plugins: [
 		new CopyWebpackPlugin(['index.html']),

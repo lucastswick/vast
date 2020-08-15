@@ -1,0 +1,15 @@
+.top-bar {
+	&.bottom {
+		position: fixed;
+		top: auto;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+	}
+
+	.menu {
+		display: grid;
+		grid-gap: 0.5rem;
+		grid-auto-flow: column;
+	}
+}

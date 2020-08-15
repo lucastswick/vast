@@ -1,11 +1,14 @@
 import Navigo from 'Navigo';
+import EventEmitter from 'JS/event-emitter.js';
 
 class Router {
-	constructor(json) {
+	constructor() {
 		this.state = { ready: false };
 		this.router = new Navigo(null);
+		this.eventEmitter = new EventEmitter();
+	}
 
-		// load json
+	load(json) {
 		fetch(json)
 			.then((response) => {
 				return response.json();
@@ -77,18 +80,25 @@ class Router {
 
 	navigate(path) {
 		this.router.navigate(path);
+
+		const slideModel = this.getSlideModel();
+		this.eventEmitter.emit('onRouteChange', { slideModel, path });
 	}
 
 	onReady(callback) {
-		console.log('On ready summoned ', this.data);
 		if (this.state.ready) {
 			const slideModel = this.getSlideModel();
 			const { index } = slideModel;
 			const total = this.data.slides.length;
-			callback({ currentIndex: index, total });
+
+			this.eventEmitter.emit('onReady', { currentIndex: index, total });
 		} else {
-			this.callback = callback;
+			this.eventEmitter.add('onReady', callback);
 		}
+	}
+
+	addEventListener(eventName, callback) {
+		this.eventEmitter.on(eventName, callback);
 	}
 }
 

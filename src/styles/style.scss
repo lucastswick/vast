@@ -1,6 +1,7 @@
 @import 'settings';
 @import 'dark-theme';
 @import 'foundation-sites/scss/foundation';
+@import 'top-bar';
 
 // All of foundation
 @include foundation-everything;
