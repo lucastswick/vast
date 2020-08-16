@@ -15,3 +15,9 @@ $breakpoints: (
 $breakpoint-classes: (small medium large xlarge xxlarge vast);
 
 // $global-font-size: 16;
+
+$grid-margin-gutters: (
+	small: 20px,
+	medium: 30px,
+	vast: 150px,
+);

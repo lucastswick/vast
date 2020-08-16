@@ -7,7 +7,7 @@
 // the larger the fonts will render.
 //
 // Reference:
-// close: 0-10 ft
+// near: 0-10 ft
 // medium: 10-25 ft
 // far: 25-50 ft
 // very-far: 50+ ft
@@ -15,10 +15,10 @@
 @use "sass:map";
 
 $distance-to-size-ratio: (
-	'close': 16,
-	'medium': 24,
-	'far': 32,
-	'very-far': 32,
+	'near': 1,
+	'medium': 1.2,
+	'far': 1.5,
+	'very-far': 2,
 );
 
 @function adjust-for-distance($base, $distance) {
@@ -28,12 +28,12 @@ $distance-to-size-ratio: (
 
 	// $adjusted-size: $size * map.get($distance-to-size-ratio, $distance);
 	$multiplier: map.get($distance-to-size-ratio, $distance);
-	$adjusted-size: $base / $multiplier * 16 * 1rem;
-	// @debug $adjusted-size;
+	$adjusted-size: $base * $multiplier * 1rem;
+	// @debug $distance - $adjusted-size;
 	@return $adjusted-size;
 }
 
-// generates classes, named .distance-close, .distance-medium, etc
+// generates classes, named .distance-near, .distance-medium, etc
 // that adjust font sizes
 @each $name, $multiplier in $distance-to-size-ratio {
 	@include breakpoint(vast) {
@@ -60,6 +60,22 @@ $distance-to-size-ratio: (
 			a,
 			button {
 				font-size: adjust-for-distance(16, $name);
+			}
+
+			.hide-for-#{$name} {
+				display: none !important;
+			}
+
+			.show-for-#{$name} {
+				display: block !important;
+			}
+
+			@each $otherName, $multiplier in $distance-to-size-ratio {
+				@if $name != $otherName {
+					.show-for-#{$otherName} {
+						display: none !important;
+					}
+				}
 			}
 		}
 	}

@@ -12,6 +12,7 @@
 	#contents {
 		text-align: center;
 	}
+
 	[data-background] {
 		position: absolute;
 		z-index: -1;
@@ -22,6 +23,21 @@
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: center;
+	}
+
+	img {
+		width: 100%;
+		height: auto;
+		max-height: 100vh;
+		object-fit: contain;
+
+		&.contain {
+			object-fit: contain;
+		}
+
+		&.cover {
+			object-fit: cover;
+		}
 	}
 }
 

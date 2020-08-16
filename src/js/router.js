@@ -70,11 +70,21 @@ class Router {
 			backgroundList[i].style.backgroundImage = "url('" + url + "')";
 		}
 
+		// perform any alignment adjustments
 		var alignmentList = document.querySelectorAll('div[data-align]');
 
 		for (let i = 0; i < alignmentList.length; i++) {
 			const alignment = alignmentList[i].getAttribute('data-align');
 			alignmentList[i].parentNode.style.textAlign = alignment;
+		}
+
+		// perform any columnar adjustments
+		var columnarList = document.querySelectorAll('div[data-column]');
+
+		for (let i = 0; i < columnarList.length; i++) {
+			const column = columnarList[i].getAttribute('data-column');
+			console.log('column ', column);
+			columnarList[i].parentNode.style.border = '2px solid red';
 		}
 	}
 
