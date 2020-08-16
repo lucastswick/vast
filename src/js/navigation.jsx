@@ -76,6 +76,8 @@ class Navigation {
 	}
 
 	render() {
+		const { currentIndex, total } = this.state;
+
 		const markup = `
 			<div class="top-bar-left">
 				<ul class="dropdown menu">
@@ -89,6 +91,7 @@ class Navigation {
 							Prev
 						</button>
 					</li>
+					<li><p>${currentIndex + 1} / ${total}</p></li>
 					<li>
 						<button type="button" class="button" data-action="next">
 							Next
@@ -110,19 +113,6 @@ class Navigation {
 		nextElements.forEach((el) => {
 			el.addEventListener('click', (e) => this.next());
 		});
-	}
-
-	onRouterReady({ currentIndex, total }) {
-		this.state = { ...this.state, enabled: true, currentIndex, total };
-		this.onKeyDown = this.onKeyDown.bind(this);
-		this.enable();
-
-		this.state.visible ? this.show() : this.hide();
-	}
-
-	onRouteChange() {
-		const prevElements = document.querySelectorAll('[data-action=prev]');
-		const nextElements = document.querySelectorAll('[data-action=next]');
 
 		if (this.state.currentIndex === 0) {
 			prevElements.forEach((el) => el.classList.add('disabled'));
@@ -135,6 +125,18 @@ class Navigation {
 		} else {
 			nextElements.forEach((el) => el.classList.remove('disabled'));
 		}
+	}
+
+	onRouterReady({ currentIndex, total }) {
+		this.state = { ...this.state, enabled: true, currentIndex, total };
+		this.onKeyDown = this.onKeyDown.bind(this);
+		this.enable();
+
+		this.state.visible ? this.show() : this.hide();
+	}
+
+	onRouteChange() {
+		this.render();
 	}
 
 	clear() {

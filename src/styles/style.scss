@@ -43,6 +43,7 @@
 
 @include breakpoint(vast) {
 	.grid-container {
+		width: 100%;
 		max-width: 90%;
 	}
 }

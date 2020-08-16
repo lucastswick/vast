@@ -12,13 +12,16 @@
 // far: 25-50 ft
 // very-far: 50+ ft
 
+@use "sass:list";
 @use "sass:map";
 
+$distances: [ 'very-far', 'far', 'medium', 'near', ];
+
 $distance-to-size-ratio: (
-	'near': 1,
-	'medium': 1.2,
-	'far': 1.5,
-	'very-far': 2,
+	'near': 0.5,
+	'medium': 0.75,
+	'far': 1,
+	'very-far': 1.5,
 );
 
 @function adjust-for-distance($base, $distance) {
@@ -61,22 +64,88 @@ $distance-to-size-ratio: (
 			button {
 				font-size: adjust-for-distance(16, $name);
 			}
+		}
+	}
+}
 
-			.hide-for-#{$name} {
-				display: none !important;
-			}
-
-			.show-for-#{$name} {
-				display: block !important;
-			}
-
-			@each $otherName, $multiplier in $distance-to-size-ratio {
-				@if $name != $otherName {
-					.show-for-#{$otherName} {
+@each $distance in $distances {
+	@include breakpoint(vast) {
+		.distance-#{$distance} {
+			@each $otherDistance in $distances {
+				@if $distance != $otherDistance {
+					.show-for-#{$otherDistance} {
 						display: none !important;
 					}
+				}
+				.show-for-#{$distance} {
+					display: block !important;
+				}
+				.hide-for-#{$distance} {
+					display: none !important;
 				}
 			}
 		}
 	}
 }
+
+// @include breakpoint(vast) {
+// 	.distance-near {
+// 		.show-for-medium,
+// 		.show-for-far,
+// 		.show-for-very-far {
+// 			display: none !important;
+// 		}
+// 		.show-for-near {
+// 			display: block !important;
+// 		}
+
+// 		.hide-for-near {
+// 			display: none !important;
+// 		}
+// 	}
+
+// 	.distance-medium {
+// 		.show-for-near,
+// 		.show-for-far,
+// 		.show-for-very-far {
+// 			display: none !important;
+// 		}
+// 		.show-for-medium {
+// 			display: block !important;
+// 		}
+
+// 		.hide-for-medium {
+// 			display: none !important;
+// 		}
+// 	}
+
+// 	.distance-far {
+// 		.show-for-near,
+// 		.show-for-medium,
+// 		.show-for-very-far {
+// 			display: none !important;
+// 		}
+// 		.show-for-far {
+// 			display: block !important;
+// 		}
+
+// 		.hide-for-far {
+// 			display: none !important;
+// 		}
+// 	}
+
+// 	.distance-very-far {
+// 		.show-for-near,
+// 		.show-for-medium,
+// 		.show-for-far {
+// 			display: none !important;
+// 		}
+// 		.show-for-very-far {
+// 			display: block !important;
+// 		}
+
+// 		.hide-for-very-far {
+// 			display: none !important;
+// 		}s
+// 	}
+// }

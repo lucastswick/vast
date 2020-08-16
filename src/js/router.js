@@ -72,10 +72,11 @@ class Router {
 
 		// perform any alignment adjustments
 		var alignmentList = document.querySelectorAll('div[data-align]');
+		contents.style.removeProperty('text-align');
 
 		for (let i = 0; i < alignmentList.length; i++) {
 			const alignment = alignmentList[i].getAttribute('data-align');
-			alignmentList[i].parentNode.style.textAlign = alignment;
+			contents.style.textAlign = alignment;
 		}
 
 		// perform any columnar adjustments
