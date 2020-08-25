@@ -128,14 +128,24 @@ class Navigation {
 	}
 
 	onRouterReady({ currentIndex, total }) {
-		this.state = { ...this.state, enabled: true, currentIndex, total };
+		this.state = {
+			...this.state,
+			enabled: true,
+			currentIndex,
+			total,
+		};
 		this.onKeyDown = this.onKeyDown.bind(this);
 		this.enable();
 
 		this.state.visible ? this.show() : this.hide();
 	}
 
-	onRouteChange() {
+	onRouteChange({ slideModel }) {
+		this.state = {
+			...this.state,
+			currentIndex: slideModel.index,
+		};
+
 		this.render();
 	}
 

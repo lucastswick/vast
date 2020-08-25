@@ -10,7 +10,12 @@
 
 	.menu {
 		display: grid;
+		align-items: center;
 		grid-gap: 0.5rem;
 		grid-auto-flow: column;
+
+		p {
+			margin: 0;
+		}
 	}
 }
