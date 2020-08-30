@@ -40,6 +40,13 @@
 			object-fit: cover;
 		}
 	}
+
+	.responsive-embed {
+		// fill screen vertically, with 100px for navigation bar reserved
+		// otherwise the player controls will be hidden
+		// under the nav bar
+		padding-bottom: calc(100vh - 100px);
+	}
 }
 
 @include breakpoint(vast) {

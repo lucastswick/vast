@@ -36,8 +36,7 @@ class Autoplay {
 
 	onRouterReady({ currentIndex, total, data, slideModel }) {
 		const isVideo = this.getIsVideo();
-		const shouldAutoplay =
-			!isVideo && data && data.autoplay && data.autoplay.enabled;
+		const shouldAutoplay = data && data.autoplay && data.autoplay.enabled;
 		const autoplayTimeout =
 			(shouldAutoplay && data && data.autoplay && data.autoplay.timeout) || 5;
 		const loop = data && data.autoplay && data.autoplay.loop;
@@ -55,9 +54,14 @@ class Autoplay {
 		document.removeEventListener('keydown', this.onKeyDown);
 		document.addEventListener('keydown', this.onKeyDown);
 
+		console.log(shouldAutoplay, isVideo);
 		if (shouldAutoplay) {
-			this.enable();
-			this.startAutoplay();
+			if (!isVideo) {
+				this.enable();
+				this.startAutoplay();
+			} else {
+				this.autoplayVideo();
+			}
 		}
 	}
 
@@ -78,9 +82,11 @@ class Autoplay {
 	advance() {
 		const { currentIndex, total, loop, slideModel } = this.state;
 		const isVideo = slideModel && slideModel.type === 'video';
+
 		if (isVideo) {
 			return;
 		}
+
 		const nextIndex =
 			currentIndex + 1 < total ? currentIndex + 1 : loop ? 0 : currentIndex;
 		if (currentIndex !== nextIndex) {
@@ -112,7 +118,44 @@ class Autoplay {
 		};
 
 		if (this.getIsVideo()) {
-			this.disable();
+			this.autoplayVideo();
+		}
+	}
+
+	autoplayVideo() {
+		const wasEnabled = this.state.enabled;
+		this.disable();
+
+		// listen to video events
+		var video = document.querySelector(`[data-type="video"]`);
+
+		if (video) {
+			const iframe = video.querySelector('iframe');
+			var player = new Vimeo.Player(iframe);
+
+			// autoplay at end or after timeout
+			const autoplayTimeout = video.getAttribute('data-autoplay-timeout');
+
+			// if autoplayTimeout is a number,
+			// use that value to advance
+			// otherwise wait until end of video
+			const autoplayTimeoutIsNumber =
+				autoplayTimeout == parseInt(autoplayTimeout, 10);
+
+			if (autoplayTimeoutIsNumber) {
+				clearInterval(this.autoplayId);
+				this.autoplayId = setInterval(() => {
+					this.advance();
+					this.startAutoplay();
+				}, autoplayTimeout * 1000);
+			} else {
+				// when the video has emitted its complete event
+				// enable autoplay.
+				player.on('ended', function(data) {
+					// but only if autoplay was enabled
+					if (wasEnabled) this.enable();
+				});
+			}
 		}
 	}
 
