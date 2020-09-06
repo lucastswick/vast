@@ -54,7 +54,6 @@ class Autoplay {
 		document.removeEventListener('keydown', this.onKeyDown);
 		document.addEventListener('keydown', this.onKeyDown);
 
-		console.log(shouldAutoplay, isVideo);
 		if (shouldAutoplay) {
 			if (!isVideo) {
 				this.enable();

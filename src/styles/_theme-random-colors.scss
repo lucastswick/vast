@@ -1,0 +1,17 @@
+.theme-random-colors {
+	$h: 15;
+	$s-min: 100;
+	$s-range: 25;
+	$l-min: 50;
+	$l-range: 25;
+
+	@for $i from 1 through 100 {
+		.cell:nth-child(#{$i}) {
+			background-color: hsl(
+				$h,
+				$s-min + random($s-range),
+				$l-min + random($l-range)
+			);
+		}
+	}
+}

@@ -64,7 +64,7 @@ module.exports = {
 		historyApiFallback: true,
 	},
 	plugins: [
-		new CopyWebpackPlugin(['index.html']),
+		new CopyWebpackPlugin(['*.html']),
 		new webpack.HotModuleReplacementPlugin(),
 	],
 	resolve: {

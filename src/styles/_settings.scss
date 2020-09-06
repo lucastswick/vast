@@ -14,6 +14,9 @@ $breakpoints: (
 
 $breakpoint-classes: (small medium large xlarge xxlarge vast);
 
+@media screen and (orientation: portrait) and (min-height: 1920px) {
+}
+
 // $global-font-size: 16;
 
 $grid-margin-gutters: (

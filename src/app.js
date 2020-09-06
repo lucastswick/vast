@@ -3,9 +3,18 @@ import 'STYLES/style.scss';
 import Router from 'JS/router.js';
 import Navigation from 'JS/navigation.jsx';
 import AutoplayControls from 'JS/autoplay.jsx';
+import GridFitter from 'JS/grid-fitter.jsx';
 
-const router = new Router();
-const nav = new Navigation({ router, visible: true });
-const autoplayControls = new AutoplayControls({ router });
+const gridFitter = new GridFitter();
 
-router.load('/json/ted.json');
+const isDemo = document.querySelector(`[data-demo]`);
+
+if (isDemo) {
+	const router = new Router();
+	const nav = new Navigation({ router, visible: true });
+	const autoplayControls = new AutoplayControls({ router });
+
+	const demoUri = isDemo.getAttribute('data-demo');
+
+	router.load(demoUri);
+}

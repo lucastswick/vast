@@ -61,7 +61,8 @@ $distance-to-size-ratio: (
 			}
 			p,
 			a,
-			button {
+			button,
+			* {
 				font-size: adjust-for-distance(16, $name);
 			}
 		}

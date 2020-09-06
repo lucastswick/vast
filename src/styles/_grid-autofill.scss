@@ -1,0 +1,26 @@
+// generates widths based on how many columns there are
+@for $column from 1 through 50 {
+	@include breakpoint(vast) {
+		.columns-#{$column} .grid-x .cell {
+			width: calc(100% / #{$column});
+		}
+	}
+}
+
+// generates heights based on how many rows there are
+@for $row from 1 through 50 {
+	@include breakpoint(vast) {
+		.rows-#{$row} .grid-y .cell {
+			height: calc(100vh / #{$row});
+		}
+	}
+}
+
+// .fit-all-horizontal adjusts the height of every row
+@for $row from 1 through 100 {
+	@include breakpoint(vast) {
+		.fit-all-vertical .grid-y.fit-#{$row} .cell {
+			height: #{$row}vh;
+		}
+	}
+}

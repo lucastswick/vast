@@ -6,6 +6,7 @@ class Router {
 		this.state = { ready: false };
 		this.router = new Navigo(null);
 		this.eventEmitter = new EventEmitter();
+		console.log('HI');
 	}
 
 	load(json) {
