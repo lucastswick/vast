@@ -20,11 +20,12 @@ module.exports = {
 			},
 			{
 				test: /\.s[ac]ss$/i,
+				// exclude: /node_modules/,
 				use: [
-					// Creates `style` nodes from JS strings
-					'style-loader',
-					// Translates CSS into CommonJS
-					'css-loader',
+					{
+						loader: 'file-loader',
+						options: { outputPath: 'css/', name: '[name].min.css' },
+					},
 					// Compiles Sass to CSS
 					'sass-loader',
 				],
@@ -64,7 +65,10 @@ module.exports = {
 		historyApiFallback: true,
 	},
 	plugins: [
-		new CopyWebpackPlugin(['*.html']),
+		new CopyWebpackPlugin([
+			'*.html',
+			{ from: path.resolve(__dirname, 'src', 'jasmine'), to: 'jasmine' },
+		]),
 		new webpack.HotModuleReplacementPlugin(),
 	],
 	resolve: {

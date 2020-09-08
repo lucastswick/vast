@@ -15,55 +15,72 @@
 @use "sass:list";
 @use "sass:map";
 
-$distances: [ 'very-far', 'far', 'medium', 'near', ];
+$distances: near, far;
+$elements: h1, h2, h3, h4, h5, h6, p;
 
-$distance-to-size-ratio: (
-	'near': 0.5,
-	'medium': 0.75,
-	'far': 1,
-	'very-far': 1.5,
+$near: (
+	'h1': 225,
+	'h2': 150,
+	'h3': 90,
+	'h4': 60,
+	'h5': 30,
+	'h6': 15,
+	'p': 90,
 );
 
-@function adjust-for-distance($base, $distance) {
-	@if not map.get($distance-to-size-ratio, $distance) {
-		@error "#{$distance} is not a valid distance. Expected one of #{$distance-to-size-ratio}.";
+$far: (
+	'h1': 300,
+	'h2': 225,
+	'h3': 150,
+	'h4': 90,
+	'h5': 60,
+	'h6': 30,
+	'p': 150,
+);
+
+@function get-size($distance, $element) {
+	@if not list.index($distances, $distance) {
+		@error "#{$distance} is not a valid distance. Expected one of #{$distances}.";
 	}
 
-	// $adjusted-size: $size * map.get($distance-to-size-ratio, $distance);
-	$multiplier: map.get($distance-to-size-ratio, $distance);
-	$adjusted-size: $base * $multiplier * 1rem;
-	// @debug $distance - $adjusted-size;
-	@return $adjusted-size;
+	$size: map.get($near, $element);
+
+	@if ($distance == 'far') {
+		$size: map.get($far, $element);
+	}
+
+	@debug $distance - $element - $size;
+	@return #{$size}px;
 }
 
-// generates classes, named .distance-near, .distance-medium, etc
+// generates classes, named .distance-near, .distance-far
 // that adjust font sizes
-@each $name, $multiplier in $distance-to-size-ratio {
+@each $distance in $distances {
 	@include breakpoint(vast) {
-		.distance-#{$name} {
+		.distance-#{$distance} {
 			h1 {
-				font-size: adjust-for-distance(48, $name);
+				font-size: get-size($distance, 'h1');
 			}
 			h2 {
-				font-size: adjust-for-distance(40, $name);
+				font-size: get-size($distance, 'h2');
 			}
 			h3 {
-				font-size: adjust-for-distance(31, $name);
+				font-size: get-size($distance, 'h3');
 			}
 			h4 {
-				font-size: adjust-for-distance(25, $name);
+				font-size: get-size($distance, 'h4');
 			}
 			h5 {
-				font-size: adjust-for-distance(20, $name);
+				font-size: get-size($distance, 'h5');
 			}
 			h6 {
-				font-size: adjust-for-distance(16, $name);
+				font-size: get-size($distance, 'h6');
 			}
 			p,
 			a,
 			button,
 			* {
-				font-size: adjust-for-distance(16, $name);
+				font-size: get-size($distance, 'p');
 			}
 		}
 	}
@@ -88,65 +105,3 @@ $distance-to-size-ratio: (
 		}
 	}
 }
-
-// @include breakpoint(vast) {
-// 	.distance-near {
-// 		.show-for-medium,
-// 		.show-for-far,
-// 		.show-for-very-far {
-// 			display: none !important;
-// 		}
-// 		.show-for-near {
-// 			display: block !important;
-// 		}
-
-// 		.hide-for-near {
-// 			display: none !important;
-// 		}
-// 	}
-
-// 	.distance-medium {
-// 		.show-for-near,
-// 		.show-for-far,
-// 		.show-for-very-far {
-// 			display: none !important;
-// 		}
-// 		.show-for-medium {
-// 			display: block !important;
-// 		}
-
-// 		.hide-for-medium {
-// 			display: none !important;
-// 		}
-// 	}
-
-// 	.distance-far {
-// 		.show-for-near,
-// 		.show-for-medium,
-// 		.show-for-very-far {
-// 			display: none !important;
-// 		}
-// 		.show-for-far {
-// 			display: block !important;
-// 		}
-
-// 		.hide-for-far {
-// 			display: none !important;
-// 		}
-// 	}
-
-// 	.distance-very-far {
-// 		.show-for-near,
-// 		.show-for-medium,
-// 		.show-for-far {
-// 			display: none !important;
-// 		}
-// 		.show-for-very-far {
-// 			display: block !important;
-// 		}
-
-// 		.hide-for-very-far {
-// 			display: none !important;
-// 		}s
-// 	}
-// }
