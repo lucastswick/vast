@@ -2,7 +2,7 @@
 @for $column from 1 through 50 {
 	@include breakpoint(vast) {
 		.columns-#{$column} .grid-x .cell {
-			width: calc(100% / #{$column});
+			// width: calc(100% / #{$column});
 		}
 	}
 }
@@ -11,7 +11,7 @@
 @for $row from 1 through 50 {
 	@include breakpoint(vast) {
 		.rows-#{$row} .grid-y .cell {
-			height: calc(100vh / #{$row});
+			// height: calc(100% / #{$row});
 		}
 	}
 }
