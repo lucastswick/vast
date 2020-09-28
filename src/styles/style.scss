@@ -1,6 +1,7 @@
 @import 'settings';
 @import 'theme-dark';
 @import 'theme-random-colors';
+@import 'theme-border';
 @import 'foundation-sites/scss/foundation';
 @import 'top-bar';
 
@@ -9,6 +10,7 @@
 
 @import 'adjust-for-distance';
 @import 'grid-autofill';
+@import 'foundation-overrides';
 
 .presentation {
 	#contents {
@@ -77,7 +79,7 @@
 	height: 100vh;
 }
 
-@include breakpoint(vast) {
+@mixin vast {
 	.grid-container {
 		display: grid;
 		grid-auto-flow: row;
@@ -95,4 +97,12 @@
 		width: 100%;
 		object-fit: contain;
 	}
+}
+
+.emulate-vast {
+	@include vast;
+}
+
+@include breakpoint(vast) {
+	@include vast;
 }

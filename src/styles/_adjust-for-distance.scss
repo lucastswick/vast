@@ -79,6 +79,8 @@ $far: (
 			p,
 			a,
 			button,
+			.button-group .button,
+			.pagination li,
 			* {
 				font-size: get-size($distance, 'p');
 			}
