@@ -3,6 +3,7 @@
 	@include breakpoint(vast) {
 		.columns-#{$column} .grid-x .cell {
 			// width: calc(100% / #{$column});
+			// width: 100%;
 		}
 	}
 }
@@ -16,7 +17,7 @@
 	}
 }
 
-// .fit-all-horizontal adjusts the height of every row
+// .fit-all-vertical adjusts the height of every cell
 @for $row from 1 through 100 {
 	@include breakpoint(vast) {
 		.fit-all-vertical .grid-y.fit-#{$row} .cell {

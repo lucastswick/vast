@@ -4,6 +4,7 @@
 @import 'theme-border';
 @import 'foundation-sites/scss/foundation';
 @import 'top-bar';
+@import 'typography-guide';
 
 // All of foundation
 @include foundation-everything;
@@ -79,18 +80,22 @@
 	height: 100vh;
 }
 
+.full-width {
+	width: 100% !important;
+}
+
 @mixin vast {
-	.grid-container {
+	.grid-container.smart-grid {
 		display: grid;
 		grid-auto-flow: row;
 		grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
-	}
 
-	.grid-x {
-		display: grid;
-		grid-auto-flow: column;
-		grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-		height: 100%;
+		.grid-x {
+			display: grid;
+			grid-auto-flow: column;
+			grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+			height: 100%;
+		}
 	}
 
 	.fill-contain {
