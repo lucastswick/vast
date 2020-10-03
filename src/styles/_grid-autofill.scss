@@ -1,9 +1,12 @@
 // generates widths based on how many columns there are
 @for $column from 1 through 50 {
 	@include breakpoint(vast) {
-		.columns-#{$column} .grid-x .cell {
-			// width: calc(100% / #{$column});
-			// width: 100%;
+		.columns-#{$column}.grid-x {
+			@for $span from 1 through 50 {
+				& > .vast-#{$span} {
+					width: calc(100% / #{$column} * #{$span});
+				}
+			}
 		}
 	}
 }
@@ -11,8 +14,12 @@
 // generates heights based on how many rows there are
 @for $row from 1 through 50 {
 	@include breakpoint(vast) {
-		.rows-#{$row} .grid-y .cell {
-			// height: calc(100% / #{$row});
+		.rows-#{$row}.grid-y {
+			@for $span from 1 through 50 {
+				& > .vast-#{$span} {
+					height: calc(100% / #{$row} * #{$span});
+				}
+			}
 		}
 	}
 }
