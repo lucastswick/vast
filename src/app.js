@@ -14,7 +14,9 @@ if (isDemo) {
 	const nav = new Navigation({ router, visible: true });
 	const autoplayControls = new AutoplayControls({ router });
 
-	const demoUri = isDemo.getAttribute('data-demo');
+	const demoUri = document
+		.querySelector(`[data-demo]`)
+		.getAttribute('data-demo');
 
 	router.load(demoUri);
 }

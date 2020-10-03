@@ -29,12 +29,12 @@ class Navigation {
 		document.removeEventListener('keydown', this.onKeyDown);
 		document.addEventListener('keydown', this.onKeyDown);
 
-		window.removeEventListener('popstate', this.onPopState);
-		window.addEventListener('popstate', this.onPopState, false);
+		// window.removeEventListener('popstate', this.onPopState);
+		// window.addEventListener('popstate', this.onPopState, false);
 	}
 
 	disable() {
-		window.removeEventListener('popstate', this.onPopState);
+		// window.removeEventListener('popstate', this.onPopState);
 		document.removeEventListener('keydown', this.onKeyDown);
 
 		this.state.enabled = false;
@@ -71,9 +71,9 @@ class Navigation {
 		this.router.navigate(`/slides/slide-${index + 1}`);
 	}
 
-	onPopState(event) {
-		console.log('state ', history.state);
-	}
+	// onPopState(event) {
+	// 	console.log('state ', history.state);
+	// }
 
 	render() {
 		const { currentIndex, total } = this.state;

@@ -4,9 +4,8 @@ import EventEmitter from 'JS/event-emitter.js';
 class Router {
 	constructor() {
 		this.state = { ready: false };
-		this.router = new Navigo(null);
+		this.router = new Navigo(null, true);
 		this.eventEmitter = new EventEmitter();
-		console.log('HI');
 	}
 
 	load(json) {
@@ -18,7 +17,7 @@ class Router {
 				this.data = data;
 
 				this.router
-					.on('/slides/*', () => {
+					.on('/slides/:id', () => {
 						this.loadSlide();
 					})
 					.resolve();
@@ -44,9 +43,9 @@ class Router {
 
 	getSlideModel() {
 		// derive the slide from the url
-		const pathname = window.location.pathname;
-		// get the slide index from the pathname, or default to 1
-		let slideIndex = parseInt(pathname.split('slide-')[1] || 1, 10);
+		const hash = window.location.hash;
+		// get the slide index from the hash, or default to 1
+		let slideIndex = parseInt(hash.split('slide-')[1] || 1, 10);
 		// slides are labelled 1, 2, 3, but are arrays (0, 1, 2)
 		slideIndex -= 1;
 
