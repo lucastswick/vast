@@ -40,25 +40,31 @@ class Autoplay {
 		const autoplayTimeout =
 			(shouldAutoplay && data && data.autoplay && data.autoplay.timeout) || 5;
 		const loop = data && data.autoplay && data.autoplay.loop;
+		const kiosk = data && data.autoplay && data.autoplay.kiosk;
 
 		this.state = {
 			...this.state,
+			data,
 			currentIndex,
 			total,
 			loop,
+			kiosk,
 			autoplayTimeout,
 			slideModel,
 		};
 
-		this.onKeyDown = this.onKeyDown.bind(this);
-		document.removeEventListener('keydown', this.onKeyDown);
-		document.addEventListener('keydown', this.onKeyDown);
+		if (!kiosk) {
+			this.onKeyDown = this.onKeyDown.bind(this);
+			document.removeEventListener('keydown', this.onKeyDown);
+			document.addEventListener('keydown', this.onKeyDown);
+		}
 
 		if (shouldAutoplay) {
 			if (!isVideo) {
 				this.enable();
 				this.startAutoplay();
 			} else {
+				this.state.enabled = true;
 				this.autoplayVideo();
 			}
 		}
@@ -116,7 +122,9 @@ class Autoplay {
 			currentIndex: slideModel.index,
 		};
 
-		if (this.getIsVideo()) {
+		const { data } = this.state;
+		const shouldAutoplay = data && data.autoplay && data.autoplay.enabled;
+		if (shouldAutoplay && this.getIsVideo()) {
 			this.autoplayVideo();
 		}
 	}
@@ -126,35 +134,156 @@ class Autoplay {
 		this.disable();
 
 		// listen to video events
-		var video = document.querySelector(`[data-type="video"]`);
+		const video = document.querySelector(`[data-type="video"]`);
 
 		if (video) {
 			const iframe = video.querySelector('iframe');
-			var player = new Vimeo.Player(iframe);
+			const src = iframe && iframe.getAttribute('src');
 
-			// autoplay at end or after timeout
-			const autoplayTimeout = video.getAttribute('data-autoplay-timeout');
+			let provider;
+			if (!src) {
+				provider = 'local';
+			} else if (src.indexOf('https://player.vimeo.com/video') === 0) {
+				provider = 'vimeo';
+			} else if (src.indexOf('https://www.youtube.com/embed/') === 0) {
+				provider = 'youtube';
+			}
 
-			// if autoplayTimeout is a number,
-			// use that value to advance
-			// otherwise wait until end of video
-			const autoplayTimeoutIsNumber =
-				autoplayTimeout == parseInt(autoplayTimeout, 10);
+			if (provider === 'local') {
+				this.createLocalPlayer({ wasEnabled });
+			} else if (provider === 'vimeo') {
+				this.createVimeoPlayer({ wasEnabled });
+			} else if (provider === 'youtube') {
+				this.createYoutubePlayer({ wasEnabled });
+			}
+		}
+	}
 
-			if (autoplayTimeoutIsNumber) {
-				clearInterval(this.autoplayId);
-				this.autoplayId = setInterval(() => {
+	createLocalPlayer({ wasEnabled = false } = {}) {
+		const video = document.querySelector(`[data-type="video"] video`);
+
+		if (this.state.kiosk) {
+			video.removeAttribute('controls');
+		}
+
+		video.addEventListener('ended', () => {
+			console.log('local video ended ', wasEnabled);
+			if (wasEnabled) {
+				this.enable();
+				this.advance();
+				this.startAutoplay();
+			}
+		});
+	}
+
+	createVimeoPlayer({ wasEnabled = false } = {}) {
+		const video = document.querySelector(`[data-type="video"]`);
+		const iframe = video.querySelector('iframe');
+
+		let src = iframe.getAttribute('src');
+		if (this.state.kiosk) {
+			src = src.indexOf('?') === -1 ? src.concat('?') : src.concat('&');
+			src = src.replace('controls=1', '').concat('controls=0');
+			iframe.setAttribute('src', src);
+		}
+
+		const player = new Vimeo.Player(iframe);
+
+		// autoplay at end or after timeout
+		const autoplayTimeout = video.getAttribute('data-autoplay-timeout');
+
+		// if autoplayTimeout is a number,
+		// use that value to advance
+		// otherwise wait until end of video
+		const autoplayTimeoutIsNumber =
+			autoplayTimeout && autoplayTimeout == parseInt(autoplayTimeout, 10);
+
+		if (autoplayTimeoutIsNumber) {
+			clearInterval(this.autoplayId);
+			this.autoplayId = setInterval(() => {
+				this.advance();
+				this.startAutoplay();
+			}, autoplayTimeout * 1000);
+		} else {
+			// when the video has emitted its complete event
+			// enable autoplay.
+			player.on('ended', (data) => {
+				// but only if autoplay was enabled
+				console.log('vimeo ended ', wasEnabled);
+				if (wasEnabled) {
+					this.enable();
 					this.advance();
 					this.startAutoplay();
-				}, autoplayTimeout * 1000);
-			} else {
-				// when the video has emitted its complete event
-				// enable autoplay.
-				player.on('ended', function(data) {
-					// but only if autoplay was enabled
-					if (wasEnabled) this.enable();
-				});
-			}
+				}
+			});
+		}
+	}
+
+	onYTPlayerStateChange({ wasEnabled, event }) {
+		console.log('yt ended ', wasEnabled);
+		if (event.data === 0 && wasEnabled) {
+			this.enable();
+			this.advance();
+			this.startAutoplay();
+		}
+	}
+
+	createYoutubePlayer({ wasEnabled = false } = {}) {
+		console.log('creating youtube player');
+
+		const video = document.querySelector(`[data-type="video"]`);
+		const iframe = video.querySelector('iframe');
+		let src = iframe.getAttribute('src');
+		if (this.state.kiosk) {
+			src = src.indexOf('?') === -1 ? src.concat('?') : src.concat('&');
+			src = src.replace('controls=1', '').concat('controls=0');
+			iframe.setAttribute('src', src);
+		}
+
+		var tag = document.createElement('script');
+
+		tag.src = 'https://www.youtube.com/iframe_api';
+		var firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+		var player;
+
+		window.onYouTubeIframeAPIReady = () => {
+			player = new YT.Player('ytplayer', {
+				autoplay: 1,
+				events: {
+					// onReady: onPlayerReady,
+					onStateChange: (event) =>
+						this.onYTPlayerStateChange({ wasEnabled, event }),
+				},
+			});
+		};
+
+		/*
+		function onPlayerReady(event) {
+			// event.target.playVideo();
+		}
+		*/
+
+		// autoplay at end or after timeout
+		const autoplayTimeout = video.getAttribute('data-autoplay-timeout');
+
+		// if autoplayTimeout is a number,
+		// use that value to advance
+		// otherwise wait until end of video
+		const autoplayTimeoutIsNumber =
+			autoplayTimeout == parseInt(autoplayTimeout, 10);
+
+		if (autoplayTimeoutIsNumber) {
+			clearInterval(this.autoplayId);
+			this.autoplayId = setInterval(() => {
+				this.advance();
+				this.startAutoplay();
+			}, autoplayTimeout * 1000);
+		} else {
+			// the video is already listening
+			// to it's own complete event
+			// with the youtube player api
 		}
 	}
 
