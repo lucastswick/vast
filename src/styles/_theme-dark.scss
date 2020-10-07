@@ -19,4 +19,10 @@ $white: #fefefe;
 [data-theme='dark'] {
 	// background: $black;
 	color: $white;
+	* {
+		color: $white;
+	}
+	a:hover {
+		color: $white;
+	}
 }

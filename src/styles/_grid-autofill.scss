@@ -8,6 +8,15 @@
 				}
 			}
 		}
+		@include breakpoint(portrait) {
+			.portrait-columns-#{$column}.grid-x {
+				@for $span from 1 through 50 {
+					& > .vast-#{$span} {
+						width: calc(100% / #{$column} * #{$span});
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -18,6 +27,15 @@
 			@for $span from 1 through 50 {
 				& > .vast-#{$span} {
 					height: calc(100% / #{$row} * #{$span});
+				}
+			}
+		}
+		@include breakpoint(portrait) {
+			.portrait-rows-#{$row}.grid-y {
+				@for $span from 1 through 50 {
+					& > .vast-#{$span} {
+						height: calc(100% / #{$row} * #{$span});
+					}
 				}
 			}
 		}

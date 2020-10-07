@@ -76,7 +76,7 @@ class Navigation {
 	// }
 
 	render() {
-		const { currentIndex, total } = this.state;
+		const { currentIndex, total, kiosk } = this.state;
 
 		const markup = `
 			<div class="top-bar-left">
@@ -84,7 +84,9 @@ class Navigation {
 					<li class="menu-text">Ted's Presentation</li>
 				</ul>
 			</div>
-			<div class="top-bar-right">
+			${
+				!kiosk
+					? `<div class="top-bar-right">
 				<ul class="menu">
 					<li>
 						<button type="button" class="button" data-action="prev">
@@ -98,7 +100,9 @@ class Navigation {
 						</button>
 					</li>
 				</ul>
-			</div>
+			</div>`
+					: `<p>${currentIndex + 1} / ${total}</p>`
+			}
 		`;
 
 		this.container.innerHTML = markup;
@@ -127,12 +131,14 @@ class Navigation {
 		}
 	}
 
-	onRouterReady({ currentIndex, total }) {
+	onRouterReady({ currentIndex, total, data }) {
+		const { kiosk } = data.autoplay && data.autoplay.kiosk;
 		this.state = {
 			...this.state,
 			enabled: true,
 			currentIndex,
 			total,
+			kiosk,
 		};
 		this.onKeyDown = this.onKeyDown.bind(this);
 		this.enable();
