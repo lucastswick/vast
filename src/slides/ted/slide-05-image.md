@@ -1,1 +1,1 @@
-![Cute Kitten](http://placekitten.com/600/600)
+![Cute Kitten](//placekitten.com/600/600)
