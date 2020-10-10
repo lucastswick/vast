@@ -3,9 +3,9 @@ import 'STYLES/style.scss';
 import Router from 'JS/router.js';
 import Navigation from 'JS/navigation.jsx';
 import AutoplayControls from 'JS/autoplay.jsx';
-import GridFitter from 'JS/grid-fitter.jsx';
+// import GridFitter from 'JS/grid-fitter.jsx';
 
-const gridFitter = new GridFitter();
+// const gridFitter = new GridFitter();
 
 const isDemo = document.querySelector(`[data-demo]`);
 

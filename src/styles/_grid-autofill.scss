@@ -12,7 +12,7 @@
 			.portrait-columns-#{$column}.grid-x {
 				@for $span from 1 through 50 {
 					& > .vast-#{$span} {
-						width: calc(100% / #{$column} * #{$span});
+						width: calc(100% / #{$column} * #{$span}) !important;
 					}
 				}
 			}
@@ -47,6 +47,15 @@
 	@include breakpoint(vast) {
 		.fit-all-vertical .grid-y.fit-#{$row} .cell {
 			height: #{$row}vh;
+		}
+	}
+}
+
+@include breakpoint(vast) {
+	.fit-all-vertical {
+		display: grid;
+		.grid-y .grid-x {
+			height: 100%;
 		}
 	}
 }

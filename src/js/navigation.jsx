@@ -132,7 +132,7 @@ class Navigation {
 	}
 
 	onRouterReady({ currentIndex, total, data }) {
-		const { kiosk } = data.autoplay && data.autoplay.kiosk;
+		const kiosk = data.autoplay && data.autoplay.kiosk;
 		this.state = {
 			...this.state,
 			enabled: true,
