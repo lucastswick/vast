@@ -18,23 +18,19 @@
 			}
 		}
 	}
-}
-
-// generates heights based on how many rows there are
-@for $row from 1 through 50 {
-	@include breakpoint(vast) {
-		.rows-#{$row}.grid-y {
+	.emulate-vast {
+		.columns-#{$column}.grid-x {
 			@for $span from 1 through 50 {
 				& > .vast-#{$span} {
-					height: calc(100% / #{$row} * #{$span});
+					width: calc(100% / #{$column} * #{$span});
 				}
 			}
 		}
 		@include breakpoint(portrait) {
-			.portrait-rows-#{$row}.grid-y {
+			.portrait-columns-#{$column}.grid-x {
 				@for $span from 1 through 50 {
 					& > .vast-#{$span} {
-						height: calc(100% / #{$row} * #{$span});
+						width: calc(100% / #{$column} * #{$span}) !important;
 					}
 				}
 			}
@@ -42,20 +38,70 @@
 	}
 }
 
-// .fit-all-vertical adjusts the height of every cell
-@for $row from 1 through 100 {
+// generates heights based on how many rows there are
+@mixin rowHeight($row) {
+	.rows-#{$row}.grid-y {
+		@for $span from 1 through 50 {
+			& > .vast-#{$span} {
+				height: calc(100% / #{$row} * #{$span});
+			}
+		}
+	}
+	@include breakpoint(portrait) {
+		.portrait-rows-#{$row}.grid-y {
+			@for $span from 1 through 50 {
+				& > .vast-#{$span} {
+					height: calc(100% / #{$row} * #{$span});
+				}
+			}
+		}
+	}
+}
+@for $row from 1 through 50 {
 	@include breakpoint(vast) {
-		.fit-all-vertical .grid-y.fit-#{$row} .cell {
+		@include rowHeight($row);
+	}
+	.emulate-vast {
+		@include rowHeight($row);
+	}
+}
+
+// .fit-all-vertical adjusts the height of every cell
+@mixin deriveRowHeight($row, $emulateVast: false) {
+	$baseClass: '.fit-all-vertical';
+	@if $emulateVast {
+		$baseClass: '.fit-all-vertical.emulate-vast';
+	}
+	#{$baseClass} {
+		.grid-y.fit-#{$row} .cell {
 			height: #{$row}vh;
 		}
 	}
 }
+@for $row from 1 through 100 {
+	@include breakpoint(vast) {
+		@include deriveRowHeight($row);
+	}
+	// .emulate-vast
+	@include deriveRowHeight($row, true);
+}
 
-@include breakpoint(vast) {
-	.fit-all-vertical {
+@mixin fitAllVertical($emulateVast: false) {
+	$baseClass: '.fit-all-vertical';
+	@if $emulateVast {
+		$baseClass: '.fit-all-vertical.emulate-vast';
+	}
+	#{$baseClass} {
 		display: grid;
 		.grid-y .grid-x {
 			height: 100%;
 		}
 	}
 }
+
+@include breakpoint(vast) {
+	@include fitAllVertical();
+}
+
+// .emulate-vast
+@include fitAllVertical(true);
