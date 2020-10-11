@@ -3,6 +3,7 @@ import 'STYLES/style.scss';
 import Router from 'JS/router.js';
 import Navigation from 'JS/navigation.jsx';
 import AutoplayControls from 'JS/autoplay.jsx';
+import Debugger from 'JS/debugger.jsx';
 // import GridFitter from 'JS/grid-fitter.jsx';
 
 // const gridFitter = new GridFitter();
@@ -19,4 +20,9 @@ if (isDemo) {
 		.getAttribute('data-demo');
 
 	router.load(demoUri);
+}
+
+const isDebugger = document.querySelector(`[data-debug]`);
+if (isDebugger.getAttribute('data-debug') === 'true') {
+	const myDebugger = new Debugger(isDebugger);
 }
