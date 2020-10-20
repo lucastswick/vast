@@ -23,6 +23,6 @@ if (isDemo) {
 }
 
 const isDebugger = document.querySelector(`[data-debug]`);
-if (isDebugger.getAttribute('data-debug') === 'true') {
+if (isDebugger && isDebugger.getAttribute('data-debug') === 'true') {
 	const myDebugger = new Debugger(isDebugger);
 }

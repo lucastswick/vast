@@ -181,6 +181,9 @@ class Autoplay {
 		const iframe = video.querySelector('iframe');
 
 		let src = iframe.getAttribute('src');
+
+		console.log('kiosk ', this.state.kiosk);
+
 		if (this.state.kiosk) {
 			src = src.indexOf('?') === -1 ? src.concat('?') : src.concat('&');
 			src = src.replace('controls=1', '').concat('controls=0');
