@@ -1,4 +1,4 @@
-import 'STYLES/style.scss';
+import './styles/style.scss';
 
 import Router from 'JS/router.js';
 import Navigation from 'JS/navigation.jsx';

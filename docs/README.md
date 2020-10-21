@@ -49,9 +49,9 @@ Vast is built on top of the excellent [Foundation for Sites](https://get.foundat
 
 It is not common to have access to a large format display to develop content for. Instead, most content creators will use their browser to emulate a large format display.
 
-To enable device emulation in Chrome, first enter Developer Tools by pressing command+option+i. Then press command+shift+m to enable the device toolbar. It will include profiles for common mobile devices and tablets. You can create custom profiles for the large format devices that are the same pixel dimensions as a large format display (https://developers.google.com/web/updates/2015/07/add-a-new-custom-device-as-a-preset).
+To enable device emulation in Chrome, first enter Developer Tools by pressing command+option+i. Then press command+shift+m to enable the device toolbar. It will include profiles for common mobile devices and tablets. You can create custom profiles for the large format devices that are the same pixel dimensions as a large format display [How to add a custom device preset](https://developers.google.com/web/updates/2015/07/add-a-new-custom-device-as-a-preset).
 
-Emulation mode gives you a good idea of how content will appear on a large format display. See the Vast Debugger for an additional layer of understanding.
+Emulation mode gives the content author a reasonable good idea of how content will appear on a large format display. See the Vast Debugger for an additional layer of understanding.
 
 ## Features
 
@@ -79,9 +79,9 @@ The presentation index file (See `/ted.html` file for an example) requires a `bo
 </body>
 ```
 
-- `data-demo` is the path to the json file (described below) and is required
-- the `#controls` div is required for presentation controls to render
-- the remaining divs are required for the presentation contents to appear correctly and should not be modified
+- `data-demo` is the path to the json file (described below) and is required\
+- the `#controls` div is required for presentation controls to render\
+- the remaining divs are required for the presentation contents to appear correctly and should not be modified\
 - the `script` tag is required and should not be modified
 
 If Vimeo is being used in the presentation, also include the Vimeo player script tag in the `body`.
@@ -266,9 +266,9 @@ Smart-grid is a class that fits content intelligbly to the screen. Most common u
 </div>
 ```
 
-`.grid-container.smart-grid` creates the layout for the grid. It equally distributes space between the number of elements in each row.
-`.full` makes the grid full-width
-`.full-height` makes the grid full-height
+`.grid-container.smart-grid` creates the layout for the grid. It equally distributes space between the number of elements in each row.\
+`.full` makes the grid full-width\
+`.full-height` makes the grid full-height\
 
 `.grid-x` represents a row (horizontal grouping) of content
 

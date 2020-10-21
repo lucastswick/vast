@@ -18,15 +18,13 @@ module.exports = merge(common, {
 	],
 	module: {
 		rules: [
-			// builds for production
 			{
 				test: /\.s[ac]ss$/i,
-				// exclude: /node_modules/,
 				use: [
-					{
-						loader: 'file-loader',
-						options: { outputPath: 'css/', name: '[name].min.css' },
-					},
+					// Creates `style` nodes from JS strings
+					'style-loader',
+					// Translates CSS into CommonJS
+					'css-loader',
 					// Compiles Sass to CSS
 					'sass-loader',
 				],
