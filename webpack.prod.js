@@ -1,18 +1,24 @@
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = merge(common, {
-  mode: 'production',
-  devtool: 'source-map',
-  plugins: {
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: 'vast.css',
-    }),
-  },
+	mode: 'production',
+	devtool: 'source-map',
+	plugins: [
+		new MiniCssExtractPlugin({
+			// Options similar to the same options in webpackOptions.output
+			// both options are optional
+			filename: 'vast.css',
+		}),
+		new CopyWebpackPlugin([
+			'*.html',
+			{ from: path.resolve(__dirname, 'src', 'jasmine'), to: 'jasmine' },
+		]),
+	],
 	module: {
 		rules: [
 			// builds for production
@@ -27,24 +33,22 @@ module.exports = merge(common, {
 					// Compiles Sass to CSS
 					'sass-loader',
 				],
-      },
-      {
-        test: /\.css$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: '/css/',
-            },
-          },
-          'css-loader',
-        ],
-      },
+			},
+			{
+				test: /\.css$/,
+				use: [
+					{
+						loader: MiniCssExtractPlugin.loader,
+						options: {
+							publicPath: '/css/',
+						},
+					},
+					'css-loader',
+				],
+			},
 		],
-  },
-  optimization: {
-    minimizer: [
-      new CssMinimizerPlugin(),
-    ],
-  },
+	},
+	optimization: {
+		minimizer: [new CssMinimizerPlugin()],
+	},
 });

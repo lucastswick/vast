@@ -1,8 +1,5 @@
 const path = require('path');
 
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const webpack = require('webpack');
-
 const marked = require('marked');
 const renderer = new marked.Renderer();
 
@@ -10,18 +7,18 @@ module.exports = {
 	entry: {
 		app: './src/app.js',
 	},
-	plugins: [
-		new CopyWebpackPlugin([
-			'*.html',
-			{ from: path.resolve(__dirname, 'src', 'jasmine'), to: 'jasmine' },
-		]),
-		// new webpack.HotModuleReplacementPlugin(),
-	],
+	devtool: 'inline-source-map',
+	devServer: {
+		contentBase: path.join(__dirname, 'dist'),
+		compress: true,
+		hot: true,
+		historyApiFallback: true,
+	},
 	module: {
 		rules: [
 			{
 				test: /\.js$/,
-				exclude: /node_modules/,
+				exclude: [/node_modules/],
 			},
 			{
 				test: /\.md$/,

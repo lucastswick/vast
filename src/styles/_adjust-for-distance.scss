@@ -49,7 +49,7 @@ $far: (
 		$size: map.get($far, $element);
 	}
 
-	@debug $distance - $element - $size;
+	// @debug $distance - $element - $size;
 	@return #{$size}px;
 }
 
