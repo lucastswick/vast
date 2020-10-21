@@ -355,11 +355,11 @@ Large format displays have a unique set of accessibility considerations, especia
 ## Demos
 
 [Presentation Demo](https://vast.generativeartist.com/ted.html)\
-[Grid Demo 1](https://vast.generativeartist.com/jasmine-1.html)\
-[Grid Demo 2](https://vast.generativeartist.com/jasmine-1.html)\
-[Grid Demo 3](https://vast.generativeartist.com/jasmine-1.html)\
-[Grid Demo 4](https://vast.generativeartist.com/jasmine-1.html)\
-[Grid Demo 5](https://vast.generativeartist.com/jasmine-1.html)\
+[Grid Demo 1](https://vast.generativeartist.com/jasmine/jasmine-1.html)\
+[Grid Demo 2](https://vast.generativeartist.com/jasmine/jasmine-1.html)\
+[Grid Demo 3](https://vast.generativeartist.com/jasmine/jasmine-1.html)\
+[Grid Demo 4](https://vast.generativeartist.com/jasmine/jasmine-1.html)\
+[Grid Demo 5](https://vast.generativeartist.com/jasmine/jasmine-1.html)\
 [Typography Demo 1](https://vast.generativeartist.com/art-wall.html)\
 [Typography Demo 2](https://vast.generativeartist.com/commons.html)\
 [Portrait Demo](https://vast.generativeartist.com/portrait.html)\
