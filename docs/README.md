@@ -363,6 +363,6 @@ Large format displays have a unique set of accessibility considerations, especia
 [Typography Demo 1](https://vast.generativeartist.com/art-wall.html)\
 [Typography Demo 2](https://vast.generativeartist.com/commons.html)\
 [Portrait Demo](https://vast.generativeartist.com/portrait.html)\
-[Debugger Demo](https://vast.generativeartist.com/debugger.html)\
+[Debugger Demo](https://vast.generativeartist.com/debugger.html)
 
-![Vast logo](./dist/img/favicon/favicon-32x32.png)
+![Vast logo](./assets/favicon-32x32.png)
