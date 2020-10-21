@@ -1,5 +1,6 @@
 # VAST
 
+![Vast logo](./dist/img/favicon/android-chrome-192x192.png)\
 Responsive Web Framework for Large Format Displays
 
 ## Quick start:
@@ -42,7 +43,7 @@ While responsive web design has solved the challenge of supporting multiple scre
 
 - **Aligning content to tiles**: Large format displays are often composed of a series of tiles, that may have a slight bevel that causes unintentional abberations in the content. Vast's grid can be configured to lay content out to the tile's physical borders to create an intentional, boutique implementation of the content's design.
 
-Vast is built on top of the excellent [Foundation for Sites](https://get.foundation/sites.html) framework. Vast extends the available media queries from the existing `small, medium, large` to include a new `vast` breakpoint, ie `@include breakpoint(vast)`.
+Vast is built on top of the excellent [Foundation for Sites](https://get.foundation/sites.html) framework. Vast extends the available media queries from the existing `small, medium, large` to include a new `vast` breakpoint, ie `@include breakpoint(vast)`. The breakpoint is configured for 2000px and up.
 
 ## Emulating large format displays
 
@@ -251,9 +252,89 @@ Note that for these classes to work, a parent node must include either the class
 
 ### Grid Fit
 
-### Portrait mode
+Large format displays are not typically scrollable and therefore require content to be laid out for the display without causing overflow. Vast builds on top of [Foundation's grid](https://get.foundation/sites/docs/xy-grid.html) with some additional helpers to make working with content easier.
+
+Smart-grid is a class that fits content intelligbly to the screen. Most common use cases are configured as:
+
+```
+<div class="grid-container smart-grid full full-height">
+  <div class="grid-x">
+    <cell />
+    <cell />
+    <cell />
+  </div>
+</div>
+```
+
+`.grid-container.smart-grid` creates the layout for the grid. It equally distributes space between the number of elements in each row.
+`.full` makes the grid full-width
+`.full-height` makes the grid full-height
+
+`.grid-x` represents a row (horizontal grouping) of content
+
+`.cell` is the container for a content block. Cells may contain any type of markup and may be styled with classes like `text-center` or `align-middle`.
+
+To place an image in a cell:
+
+```
+<div class="cell remove-padding">
+  <img class="fill" src="//placekitten.com/600/600" alt="Cat" />
+</div>
+```
+
+`.remove-padding` ensures the picture fills its cell.
+
+To support different responsive images (ie load smaller images for smaller displays), use a `picture` element as follows:
+
+```
+  <div class="cell remove-padding">
+    <picture>
+      <source media="(min-width:2000px)" srcset="//placekitten.com/2000/2000">
+      <source media="(min-width:1200px)" srcset="//placekitten.com/1200/1200">
+      <img class="fill" src="//placekitten.com/600/600" alt="Cat" />
+    </picture>
+  </div>
+```
+
+Grids can be configured to support a certain number of rows. For example, this will divide the available space by 6 even if 6 cells are not present:
+
+```
+<div class="grid-x columns-6">
+```
+
+![6 column grid](./docs/assets/grid-6-columns.jpg)
+
+Note that Vast supports up to 50 columns.
+
+Additionally, Vast can be configured to display a different column count when the display is taller than it is wide:
+
+```
+<div class="grid-x columns-6 portrait-columns-3">
+```
+
+![Portrait grid](./docs/assets/grid-portrait.jpg)
+
+This Grid layout is helpful when the large format display is composed of microtiles that have a bevel, which may cause visual aberations in the content. By using a grid configured with one column for each microtile, a content creator can easily create layouts where content aligns precisely to the physical tiles themselves.
+
+### Emulate vast
+
+In some rare cases, a content creator may wish to enable Vast on a smaller display than the 2000px breakpoint. One such example is portait displays which may be less than 2000px in width. The content creator can add the class 'emulate-vast' to enable Vast grids and viewing distance functionality even if the viewport is less than 2000px.
 
 ### Debugger
+
+When creating content for large format displays, it is often challenging to visualize how large fonts will be on the actual display. Vast supports a debug mode which enables content creators to enable an overlay that shows how big content is, by 3-inch and 1-foot increments.
+
+To enable the debugger, add the following data-attributes, as seen in `/debugger.html`
+
+```
+data-debug="true"
+data-actual-width="21.3"
+data-actual-height="7"
+```
+
+You will need the actual width and height of the display, in inches, for Vast to properly display the grid.
+
+![Debugger](./docs/assets/debugger.jpg)
 
 ## Considerations for Large Format Accessibility
 
@@ -272,3 +353,16 @@ Large format displays have a unique set of accessibility considerations, especia
 - markdown file loader
 
 ## Demos
+
+[Presentation Demo](/ted.html)\
+[Grid Demo 1](/jasmine-1.html)\
+[Grid Demo 2](/jasmine-1.html)\
+[Grid Demo 3](/jasmine-1.html)\
+[Grid Demo 4](/jasmine-1.html)\
+[Grid Demo 5](/jasmine-1.html)\
+[Typography Demo 1](/art-wall.html)\
+[Typography Demo 2](/commons.html)\
+[Portrait Demo](/portrait.html)\
+[Debugger Demo](/debugger.html)\
+
+![Vast logo](./dist/img/favicon/favicon-32x32.png)

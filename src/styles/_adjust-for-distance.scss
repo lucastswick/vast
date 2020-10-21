@@ -56,6 +56,7 @@ $far: (
 // generates classes, named .distance-near, .distance-far
 // that adjust font sizes
 @each $distance in $distances {
+	// @media screen and (min-width: 125em), (min-height: 125em) {
 	@include breakpoint(vast) {
 		.distance-#{$distance} {
 			h1 {

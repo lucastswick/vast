@@ -23,18 +23,16 @@ class Debugger {
 	}
 
 	render() {
-		const w = parseInt(
+		const w = Number(
 			document
 				.querySelector('[data-actual-width')
-				.getAttribute('data-actual-width'),
-			10
+				.getAttribute('data-actual-width')
 		);
 
-		const h = parseInt(
+		const h = Number(
 			document
 				.querySelector('[data-actual-height')
-				.getAttribute('data-actual-height'),
-			10
+				.getAttribute('data-actual-height')
 		);
 
 		if (!w || !h) {
