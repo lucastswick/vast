@@ -354,15 +354,15 @@ Large format displays have a unique set of accessibility considerations, especia
 
 ## Demos
 
-[Presentation Demo](/ted.html)\
-[Grid Demo 1](/jasmine-1.html)\
-[Grid Demo 2](/jasmine-1.html)\
-[Grid Demo 3](/jasmine-1.html)\
-[Grid Demo 4](/jasmine-1.html)\
-[Grid Demo 5](/jasmine-1.html)\
-[Typography Demo 1](/art-wall.html)\
-[Typography Demo 2](/commons.html)\
-[Portrait Demo](/portrait.html)\
-[Debugger Demo](/debugger.html)\
+[Presentation Demo](https://vast.generativeartist.com/ted.html)\
+[Grid Demo 1](https://vast.generativeartist.com/jasmine-1.html)\
+[Grid Demo 2](https://vast.generativeartist.com/jasmine-1.html)\
+[Grid Demo 3](https://vast.generativeartist.com/jasmine-1.html)\
+[Grid Demo 4](https://vast.generativeartist.com/jasmine-1.html)\
+[Grid Demo 5](https://vast.generativeartist.com/jasmine-1.html)\
+[Typography Demo 1](https://vast.generativeartist.com/art-wall.html)\
+[Typography Demo 2](https://vast.generativeartist.com/commons.html)\
+[Portrait Demo](https://vast.generativeartist.com/portrait.html)\
+[Debugger Demo](https://vast.generativeartist.com/debugger.html)\
 
 ![Vast logo](./dist/img/favicon/favicon-32x32.png)
