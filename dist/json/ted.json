@@ -1,0 +1,44 @@
+{
+	"title": "Ted's Presentation",
+	"autoplay": {
+		"enabled": false,
+		"timeout": 5,
+		"loop": false,
+		"kiosk": false
+	},
+	"slides": [
+		{
+			"loc": "ted/slide-01-title.md"
+		},
+		{
+			"loc": "ted/slide-02-background.md"
+		},
+		{
+			"loc": "ted/slide-03-theme.md"
+		},
+		{
+			"loc": "ted/slide-04-copy.md"
+		},
+		{
+			"loc": "ted/slide-05-image.md"
+		},
+		{
+			"loc": "ted/slide-06-columns.md"
+		},
+		{
+			"loc": "ted/slide-07-video-vimeo.md"
+		},
+		{
+			"loc": "ted/slide-07-video-youtube.md"
+		},
+		{
+			"loc": "ted/slide-07-video-local.md"
+		},
+		{
+			"loc": "ted/slide-08-3d.md"
+		},
+		{
+			"loc": "ted/slide-09-thanks.md"
+		}
+	]
+}

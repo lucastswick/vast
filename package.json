@@ -1,7 +1,7 @@
 {
 	"name": "vast-displays",
 	"version": "1.0.0",
-	"description": "Vast Responsive Framework for Immense Displays",
+	"description": "Vast Responsive Framework for large format displays",
 	"dependencies": {
 		"aws-amplify": "latest",
 		"foundation-sites": "^6.6.3",
@@ -10,15 +10,19 @@
 		"markdown-it-attrs": "^3.0.3",
 		"markdown-loader": "^5.1.0",
 		"navigo": "^7.1.2",
-		"style-loader": "^1.2.1"
+		"style-loader": "^1.2.1",
+		"webpack-merge": "^5.2.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.11.1",
 		"@babel/preset-env": "^7.11.0",
 		"babel-loader": "^8.1.0",
+		"clean-webpack-plugin": "^3.0.0",
 		"copy-webpack-plugin": "^4.5.2",
 		"css-loader": "^4.2.1",
 		"file-loader": "^6.1.0",
+		"html-webpack-plugin": "^4.5.0",
+		"mini-css-extract-plugin": "^1.1.1",
 		"sass": "^1.26.10",
 		"sass-loader": "^9.0.3",
 		"webpack": "^4.44.1",
@@ -26,8 +30,8 @@
 		"webpack-dev-server": "^3.1.5"
 	},
 	"scripts": {
-		"start": "webpack && webpack-dev-server --mode development",
-		"build": "webpack"
+		"start": "webpack-dev-server --open --config webpack.dev.js",
+		"build": "webpack --config webpack.prod.js"
 	},
 	"repository": {
 		"type": "git",

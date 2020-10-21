@@ -23,7 +23,7 @@ Run in development mode:
 npm start
 ```
 
-Start a local development server at port 8080. Navigate to http://localhost:8080/ in your browser
+Start a local development server at port 8080. Navigate to [http://localhost:8080/](http://localhost:8080/) in your browser
 
 Build for production:
 
