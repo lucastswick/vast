@@ -365,4 +365,4 @@ Large format displays have a unique set of accessibility considerations, especia
 [Portrait Demo](https://vast.generativeartist.com/portrait.html)\
 [Debugger Demo](https://vast.generativeartist.com/debugger.html)
 
-![Vast logo](./assets/favicon-32x32.png)
+![Vast Logo](./assets/favicon-32x32.png)
