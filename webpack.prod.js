@@ -1,3 +1,4 @@
+const path = require('path');
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 
@@ -14,10 +15,6 @@ module.exports = merge(common, {
 			// both options are optional
 			filename: 'vast.css',
 		}),
-		new CopyWebpackPlugin([
-			'*.html',
-			{ from: path.resolve(__dirname, 'src', 'jasmine'), to: 'jasmine' },
-		]),
 	],
 	module: {
 		rules: [
