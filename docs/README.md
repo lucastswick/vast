@@ -1,6 +1,6 @@
 # VAST
 
-![Vast logo](./dist/img/favicon/android-chrome-192x192.png)\
+![Vast logo](./assets/android-chrome-192x192.png)\
 Responsive Web Framework for Large Format Displays
 
 ## Quick start:
@@ -140,7 +140,7 @@ For example, a Title slide can be as simple as:
 By Ted
 ```
 
-![Title Slide](./docs/assets/title-slide.jpg)
+![Title Slide](./assets/title-slide.jpg)
 
 A slide with a background is configured as:
 
@@ -150,7 +150,7 @@ A slide with a background is configured as:
 
 where `data-background` is the path to the background image. Vast will fill the space available without distorting the image.
 
-![Background Slide](./docs/assets/background-slide.jpg)
+![Background Slide](./assets/background-slide.jpg)
 
 A slide can be themed with:
 
@@ -161,7 +161,7 @@ A slide can be themed with:
 </div>
 ```
 
-![Themed Slide](./docs/assets/theme-slide.jpg)
+![Themed Slide](./assets/theme-slide.jpg)
 
 Note that a theme requires valid markup syntax: it is not possible to render markdown inside of markup at this point.
 
@@ -182,7 +182,7 @@ Layouts can be created (See Foundation's documentation for an understanding of t
 </div>
 ```
 
-![Image Copy Slide](./docs/assets/image-copy-slide.jpg)
+![Image Copy Slide](./assets/image-copy-slide.jpg)
 
 Video Slides can be created:
 
@@ -206,14 +206,14 @@ Locally hosted videos are shown with:
 
 In fact, any service that supplies iframe codes can be rendered inside a presentation, including sketchfab 3d models and google maps. As before, simply copy/paste the iframe code from the provider and include it inside a `div` with a `responsive-embed` class.
 
-![Video Slide](./docs/assets/video-slide.jpg)
+![Video Slide](./assets/video-slide.jpg)
 
 ### Configuring Vast for Different Viewing Distances
 
 Vast supports two viewing distances to account for audiences who may be near to or far away from the large format display. A `distance-near` setting renders fonts smaller than a `distance-far` setting.
 
-![Distance Near](./docs/assets/distance-near.jpg)
-![Distance Far](./docs/assets/distance-far.jpg)
+![Distance Near](./assets/distance-near.jpg)
+![Distance Far](./assets/distance-far.jpg)
 
 _The same content rendered with `distance-near` on top and `distance-far` below_.
 
@@ -302,7 +302,7 @@ Grids can be configured to support a certain number of rows. For example, this w
 <div class="grid-x columns-6">
 ```
 
-![6 column grid](./docs/assets/grid-6-columns.jpg)
+![6 column grid](./assets/grid-6-columns.jpg)
 
 Note that Vast supports up to 50 columns.
 
@@ -312,7 +312,7 @@ Additionally, Vast can be configured to display a different column count when th
 <div class="grid-x columns-6 portrait-columns-3">
 ```
 
-![Portrait grid](./docs/assets/grid-portrait.jpg)
+![Portrait grid](./assets/grid-portrait.jpg)
 
 This Grid layout is helpful when the large format display is composed of microtiles that have a bevel, which may cause visual aberations in the content. By using a grid configured with one column for each microtile, a content creator can easily create layouts where content aligns precisely to the physical tiles themselves.
 
@@ -334,7 +334,7 @@ data-actual-height="7"
 
 You will need the actual width and height of the display, in inches, for Vast to properly display the grid.
 
-![Debugger](./docs/assets/debugger.jpg)
+![Debugger](./assets/debugger.jpg)
 
 ## Considerations for Large Format Accessibility
 
