@@ -1,6 +1,6 @@
 // generates widths based on how many columns there are
 @for $column from 1 through 50 {
-	@include breakpoint(vast) {
+	@include vast-breakpoint {
 		.columns-#{$column}.grid-x {
 			@for $span from 1 through 50 {
 				& > .vast-#{$span} {
@@ -58,7 +58,7 @@
 	}
 }
 @for $row from 1 through 50 {
-	@include breakpoint(vast) {
+	@include vast-breakpoint {
 		@include rowHeight($row);
 	}
 	.emulate-vast {
@@ -79,7 +79,7 @@
 	}
 }
 @for $row from 1 through 100 {
-	@include breakpoint(vast) {
+	@include vast-breakpoint {
 		@include deriveRowHeight($row);
 	}
 	// .emulate-vast
@@ -99,7 +99,7 @@
 	}
 }
 
-@include breakpoint(vast) {
+@include vast-breakpoint {
 	@include fitAllVertical();
 }
 

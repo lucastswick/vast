@@ -1,7 +1,7 @@
 .debugger {
 	display: none;
 	pointer-events: none;
-	@include breakpoint(vast) {
+	@include vast-breakpoint {
 		display: block;
 		position: absolute;
 		top: 0;

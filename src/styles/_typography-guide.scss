@@ -48,7 +48,7 @@
 		text-transform: uppercase;
 	}
 
-	@include breakpoint(vast) {
+	@include vast-breakpoint {
 		.rotated {
 			width: 100vh;
 			padding: 0 75px;

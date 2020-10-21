@@ -56,7 +56,7 @@
 	}
 }
 
-@include breakpoint(vast) {
+@include vast-breakpoint {
 	.grid-autofill {
 		.cell {
 			padding: 25px;
@@ -110,6 +110,6 @@
 	@include vast;
 }
 
-@include breakpoint(vast) {
+@include vast-breakpoint {
 	@include vast;
 }
