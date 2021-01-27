@@ -5,10 +5,10 @@ Responsive Web Framework for Large Format Displays
 
 ## Quick start:
 
-The easiest way to use Vast is to include the css file located at `/css/style.min.css`. First, create an `index.html` file. Then make a directory called `css` and paste the file into the directory. Then add this into the `<head>` of the `index.html` document:
+The easiest way to use Vast is to include the css file located at `/css/vast.min.css`. First, create an `index.html` file. Then make a directory called `css` and paste the file into the directory. Then add this into the `<head>` of the `index.html` document:
 
 ```
-<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/vast.min.css">
 ```
 
 Alternatively, install node modules after initial clone or download:
@@ -75,7 +75,7 @@ The presentation index file (See `/ted.html` file for an example) requires a `bo
       <div id="contents" class="large-down-grid-container fluid large-down-cell-block-y"></div>
     </div>
   </div>
-  <script src="/main.bundle.js"></script>
+  <script src="/vast.bundle.js"></script>
 </body>
 ```
 

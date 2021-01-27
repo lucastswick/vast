@@ -1,4 +1,4 @@
-import './styles/style.scss';
+import './styles/vast.scss';
 
 import Router from 'JS/router.js';
 import Navigation from 'JS/navigation.jsx';
