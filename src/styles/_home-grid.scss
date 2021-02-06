@@ -4,7 +4,7 @@
 			display: grid;
 			grid-auto-flow: row;
 			align-items: center;
-			@include breakpoint(landscape) {
+			@media screen and (orientation: landscape) {
 				height: 80vh;
 			}
 			a {
@@ -12,6 +12,7 @@
 				height: 100%;
 				display: grid;
 				align-items: center;
+				text-decoration: none;
 
 				&:hover {
 					background: rgba(#ffffff, 0.1);

@@ -5,7 +5,7 @@ const renderer = new marked.Renderer();
 
 module.exports = {
 	entry: {
-		app: './src/app.js',
+		app: './src/js/vast.js',
 	},
 	devtool: 'inline-source-map',
 	devServer: {

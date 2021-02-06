@@ -7,13 +7,8 @@
 // the larger the fonts will render.
 //
 // Reference:
-// near: 0-10 ft
-// medium: 10-25 ft
-// far: 25-50 ft
-// very-far: 50+ ft
-
-@use "sass:list";
-@use "sass:map";
+// near: 0-25 ft
+// far: 25+ ft
 
 $distances: near, far;
 $elements: h1, h2, h3, h4, h5, h6, p;
@@ -38,15 +33,21 @@ $far: (
 	'p': 75,
 );
 
+$font-weights: (
+	'regular': 400,
+	'medium': 500,
+	'bold': 700,
+);
+
 @function get-size($distance, $element) {
-	@if not list.index($distances, $distance) {
+	@if not list-index($distances, $distance) {
 		@error "#{$distance} is not a valid distance. Expected one of #{$distances}.";
 	}
 
-	$size: map.get($near, $element);
+	$size: map-get($near, $element);
 
 	@if ($distance == 'far') {
-		$size: map.get($far, $element);
+		$size: map-get($far, $element);
 	}
 
 	// @debug $distance - $element - $size;

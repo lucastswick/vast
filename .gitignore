@@ -15,3 +15,4 @@ amplifytools.xcconfig
 
 # misc
 .DS_Store
+.sass-cache/
