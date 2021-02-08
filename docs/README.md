@@ -75,7 +75,7 @@ The presentation index file (See `/ted.html` file for an example) requires a `bo
       <div id="contents" class="large-down-grid-container fluid large-down-cell-block-y"></div>
     </div>
   </div>
-  <script src="/vast.bundle.js"></script>
+  <script src="/js/vast.js"></script>
 </body>
 ```
 

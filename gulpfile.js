@@ -1,7 +1,5 @@
-// Initialize modules
-// Importing specific gulp API functions lets us write them below as series() instead of gulp.series()
 const { src, dest, watch, series, parallel } = require('gulp');
-// Importing all the Gulp-related packages we want to use
+const useref = require('gulp-useref');
 const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
@@ -43,10 +41,16 @@ function scssTask() {
 // }
 
 function jsTask() {
-	return src('src/js/vast.js')
+	return src('src/js/**/*.js')
 		.pipe(webpack(require('./webpack.dev.js')))
 		.pipe(dest('dist/js/'));
 }
+
+// function htmlTask() {
+// 	return src('src/*.html')
+// 		.pipe(useref())
+// 		.pipe(dest('dist'));
+// }
 
 function serve(cb) {
 	browserSync.init({
@@ -65,7 +69,7 @@ function reload(cb) {
 // Watch task: watch SCSS and JS files for changes
 // If any change, run scss and js tasks simultaneously
 function watchTask() {
-	watch('*.html', reload);
+	watch('dist/*.html', reload);
 	watch('src/**/*.scss', series(scssTask, reload));
 	watch('src/**/*.js', series(jsTask, reload));
 }

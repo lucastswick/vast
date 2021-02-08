@@ -1,0 +1,10 @@
+@function rem-calc($size) {
+	$remSize: $size / 16px;
+	@return #{$remSize}rem;
+}
+
+@mixin vast-breakpoint() {
+	@media screen and (min-width: #{rem-calc($vast-bp)}), (min-height: #{rem-calc($vast-bp)}) {
+		@content;
+	}
+}

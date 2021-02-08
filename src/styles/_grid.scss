@@ -1,4 +1,42 @@
+.vast-grid-frame {
+	display: grid;
+	grid-auto-flow: row;
+	width: auto;
+	overflow: hidden;
+	position: relative;
+	flex-wrap: nowrap;
+	align-items: center;
+	height: 100vh;
+
+	.grid-x {
+		display: grid;
+		grid-auto-flow: column;
+		grid-template-columns: repeat(1fr);
+
+		.cell {
+			align-self: center;
+		}
+	}
+}
+
+.grid-y {
+	display: flex;
+	flex-flow: column wrap;
+}
+
 .grid-x {
 	display: flex;
 	flex-flow: row wrap;
+}
+
+.cell {
+	flex: 0 0 auto;
+	min-height: 0px;
+	min-width: 0px;
+	width: 100%;
+}
+
+.grid-padding-x {
+	padding-left: #{rem-calc($vast-padding-x)};
+	padding-right: #{rem-calc($vast-padding-x)};
 }

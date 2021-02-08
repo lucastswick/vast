@@ -1,12 +1,4 @@
 $vast-bp: 2000px;
-
-@function rem-calc($size) {
-	$remSize: $size / 16px;
-	@return #{$remSize}rem;
-}
-
-@mixin vast-breakpoint() {
-	@media screen and (min-width: #{rem-calc($vast-bp)}), (min-height: #{rem-calc($vast-bp)}) {
-		@content;
-	}
-}
+$vast-padding-x: 25px;
+$microtile-rows: 15;
+$microtile-columns: 15;

@@ -49,8 +49,8 @@ module.exports = {
 		],
 	},
 	output: {
-		filename: 'vast.bundle.js',
-		path: path.resolve(__dirname, 'dist'),
+		filename: 'vast.js',
+		path: path.resolve(__dirname, 'dist/js'),
 	},
 	resolve: {
 		alias: {

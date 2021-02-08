@@ -1,8 +1,8 @@
 // generates widths based on how many columns there are
-@for $column from 1 through 50 {
+@for $column from 1 through $microtile-columns {
 	@include vast-breakpoint {
 		.columns-#{$column}.grid-x {
-			@for $span from 1 through 50 {
+			@for $span from 1 through $microtile-rows {
 				& > .vast-#{$span} {
 					width: calc(100% / #{$column} * #{$span});
 				}
@@ -10,7 +10,7 @@
 		}
 		@media screen and (orientation: portrait) {
 			.portrait-columns-#{$column}.grid-x {
-				@for $span from 1 through 50 {
+				@for $span from 1 through $microtile-rows {
 					& > .vast-#{$span} {
 						width: calc(100% / #{$column} * #{$span}) !important;
 					}
@@ -20,7 +20,7 @@
 	}
 	.emulate-vast {
 		.columns-#{$column}.grid-x {
-			@for $span from 1 through 50 {
+			@for $span from 1 through $microtile-rows {
 				& > .vast-#{$span} {
 					width: calc(100% / #{$column} * #{$span});
 				}
@@ -28,7 +28,7 @@
 		}
 		@media screen and (orientation: portrait) {
 			.portrait-columns-#{$column}.grid-x {
-				@for $span from 1 through 50 {
+				@for $span from 1 through $microtile-rows {
 					& > .vast-#{$span} {
 						width: calc(100% / #{$column} * #{$span}) !important;
 					}
@@ -41,7 +41,7 @@
 // generates heights based on how many rows there are
 @mixin rowHeight($row) {
 	.rows-#{$row}.grid-y {
-		@for $span from 1 through 50 {
+		@for $span from 1 through $microtile-rows {
 			& > .vast-#{$span} {
 				height: calc(100% / #{$row} * #{$span});
 			}
@@ -49,7 +49,7 @@
 	}
 	@media screen and (orientation: portrait) {
 		.portrait-rows-#{$row}.grid-y {
-			@for $span from 1 through 50 {
+			@for $span from 1 through $microtile-rows {
 				& > .vast-#{$span} {
 					height: calc(100% / #{$row} * #{$span});
 				}
@@ -57,7 +57,7 @@
 		}
 	}
 }
-@for $row from 1 through 50 {
+@for $row from 1 through $microtile-rows {
 	@include vast-breakpoint {
 		@include rowHeight($row);
 	}
@@ -78,7 +78,7 @@
 		}
 	}
 }
-@for $row from 1 through 100 {
+@for $row from 1 through $microtile-rows {
 	@include vast-breakpoint {
 		@include deriveRowHeight($row);
 	}

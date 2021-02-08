@@ -1,4 +1,9 @@
 .top-bar {
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: 1fr 250px;
+	background: white;
+
 	&.bottom {
 		position: fixed;
 		top: auto;
@@ -13,6 +18,7 @@
 		align-items: center;
 		grid-gap: 0.5rem;
 		grid-auto-flow: column;
+		list-style-type: none;
 
 		p {
 			margin: 0;

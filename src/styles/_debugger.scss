@@ -12,4 +12,8 @@
 
 		background-repeat: repeat;
 	}
+
+	.theme-dark & {
+		filter: invert(100%);
+	}
 }

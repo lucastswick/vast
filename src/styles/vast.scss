@@ -1,4 +1,6 @@
 @import 'settings';
+@import 'mixins';
+@import 'normalize';
 @import 'theme-dark';
 @import 'theme-random-colors';
 @import 'theme-border';
@@ -9,91 +11,7 @@
 @import 'debugger';
 @import 'adjust-for-distance';
 @import 'grid-autofill';
-
-*,
-*::before,
-*::after {
-	box-sizing: inherit;
-}
-
-div,
-dl,
-dt,
-dd,
-ul,
-ol,
-li,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-pre,
-form,
-p,
-blockquote,
-th,
-td {
-	margin: 0;
-	padding: 0;
-}
-
-body {
-	font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
-	font-weight: normal;
-	line-height: 1.5;
-	color: #0a0a0a;
-	-webkit-font-smoothing: antialiased;
-}
-
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-	font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-	font-style: normal;
-	font-weight: normal;
-	color: inherit;
-	text-rendering: optimizeLegibility;
-
-.presentation {
-	#contents {
-		text-align: center;
-		width: 100%;
-	}
-
-	[data-background] {
-		position: absolute;
-		z-index: -1;
-		width: 100vw;
-		height: 100vh;
-		left: 0;
-		top: 0;
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: center;
-	}
-
-	img {
-		width: 100%;
-		height: auto;
-		max-height: 100vh;
-		object-fit: contain;
-
-		&.contain {
-			object-fit: contain;
-		}
-
-		&.cover {
-			object-fit: cover;
-		}
-	}
-
-	.responsive-embed {
-		// fill screen vertically, with 100px for navigation bar reserved
-		// otherwise the player controls will be hidden
-		// under the nav bar
-		padding-bottom: calc(100vh - 100px);
-	}
-}
+@import 'presentation';
 
 @include vast-breakpoint {
 	.grid-autofill {
@@ -127,6 +45,10 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 
 .full-width {
 	width: 100% !important;
+}
+
+.align-center {
+	align-items: center;
 }
 
 @mixin vast-mixin {

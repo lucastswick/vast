@@ -28,6 +28,7 @@
 		"gulp-postcss": "^9.0.0",
 		"gulp-sass": "^4.1.0",
 		"gulp-sourcemaps": "^3.0.0",
+		"gulp-useref": "^5.0.0",
 		"html-webpack-plugin": "^4.5.0",
 		"mini-css-extract-plugin": "^1.1.1",
 		"node-sass": "^5.0.0",
@@ -42,8 +43,7 @@
 		"webpack-stream": "^6.1.2"
 	},
 	"scripts": {
-		"gulp": "node node_modules/gulp/bin/gulp.js",
-		"start": "webpack-dev-server --open --config webpack.dev.js",
+		"start": "node node_modules/gulp/bin/gulp.js ",
 		"build": "webpack --config webpack.prod.js"
 	},
 	"repository": {
