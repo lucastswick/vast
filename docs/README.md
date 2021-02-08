@@ -5,10 +5,10 @@ Responsive Web Framework for Large Format Displays
 
 ## Quick start:
 
-The easiest way to use Vast is to include the css file located at `/css/vast.min.css`. First, create an `index.html` file. Then make a directory called `css` and paste the file into the directory. Then add this into the `<head>` of the `index.html` document:
+The easiest way to use Vast is to include the css file located at `/css/vast.css`. First, create an `index.html` file. Then make a directory called `css` and paste the file into the directory. Then add this into the `<head>` of the `index.html` document:
 
 ```
-<link rel="stylesheet" href="/css/vast.min.css">
+<link rel="stylesheet" href="/css/vast.css">
 ```
 
 Alternatively, install node modules after initial clone or download:
@@ -43,7 +43,7 @@ While responsive web design has solved the challenge of supporting multiple scre
 
 - **Aligning content to tiles**: Large format displays are often composed of a series of tiles, that may have a slight bevel that causes unintentional abberations in the content. Vast's grid can be configured to lay content out to the tile's physical borders to create an intentional, boutique implementation of the content's design.
 
-Vast is built on top of the excellent [Foundation for Sites](https://get.foundation/sites.html) framework. Vast extends the available media queries from the existing `small, medium, large` to include a new `vast` breakpoint, ie `@include breakpoint(vast)`. The breakpoint is configured for 2000px and up.
+Vast is modelled after the excellent [Foundation for Sites](https://get.foundation/sites.html) framework. Similar to Foundation's available `small, medium, large` breakpoints, Vast activates on displays larger than 2000px.
 
 ## Emulating large format displays
 
@@ -169,8 +169,6 @@ Slides can display images, copy, or a combination:
 
 Images can be displayed with markdown: `![Cute Kitten](//placekitten.com/600/600)` or markup: `<img class="contain" src="//placekitten.com/600/600" alt="A cute kitten" />`
 
-Layouts can be created (See Foundation's documentation for an understanding of the grid and helper classes: https://get.foundation/sites/docs/xy-grid.html)
-
 ```
 <div class="grid-x grid-padding-x">
   <div class="cell medium-6">
@@ -252,9 +250,7 @@ Note that for these classes to work, a parent node must include either the class
 
 ### Grid Fit
 
-Large format displays are not typically scrollable and therefore require content to be laid out for the display without causing overflow. Vast builds on top of [Foundation's grid](https://get.foundation/sites/docs/xy-grid.html) with some additional helpers to make working with content easier.
-
-Smart-grid is a class that fits content intelligbly to the screen. Most common use cases are configured as:
+Large format displays are not typically scrollable and therefore require content to be laid out for the display without causing overflow. Smart-grid is a class that fits content intelligbly to the screen. Most common use cases are configured as:
 
 ```
 <div class="grid-container smart-grid full full-height">
