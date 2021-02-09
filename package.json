@@ -47,8 +47,7 @@
 	},
 	"scripts": {
 		"start": "node node_modules/gulp/bin/gulp.js ",
-		"minify": "node node_modules/gulp/bin/gulp.js build",
-		"build": "webpack --config webpack.prod.js"
+		"build": "node node_modules/gulp/bin/gulp.js build"
 	},
 	"repository": {
 		"type": "git",
